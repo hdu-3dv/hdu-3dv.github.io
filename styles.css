@@ -1668,7 +1668,11 @@ body.js .pub-figure.is-placeholder img {
     display: block;
     width: 100%;
     aspect-ratio: 8 / 5;
-    object-fit: cover;
+    /* contain + white matte: keep the full figure visible (framework
+       figures have mixed aspect ratios; cover would crop content and
+       expose the dark card background as black bars) */
+    object-fit: contain;
+    background: #fff;
     transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -1752,7 +1756,9 @@ body.js .pub-figure.is-placeholder img {
     max-width: 100%;
     max-height: 78vh;
     object-fit: contain;
-    background: var(--card);
+    /* white matte matches the figures' white background — a dark
+       background here reads as black bars around the figure */
+    background: #fff;
     border: 1px solid rgba(200, 164, 93, 0.45);
     border-radius: 14px;
     padding: 0.8rem;
