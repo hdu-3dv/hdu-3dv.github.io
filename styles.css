@@ -1526,6 +1526,7 @@ body.modal-open {
 .pub-item {
     display: grid;
     grid-template-columns: 210px 1fr;
+    align-items: center;
     gap: 1.4rem;
     background: var(--card);
     border: 1px solid rgba(20, 21, 27, 0.06);
@@ -1566,6 +1567,12 @@ body.modal-open {
 .pub-figure.is-placeholder {
     cursor: default;
     opacity: 1;
+}
+
+/* no-figure cards keep a fixed skeleton box so the scan-art stays
+   visible (real images size themselves naturally) */
+.pub-figure.is-placeholder img {
+    aspect-ratio: 8 / 5;
 }
 
 .pub-scan-art {
@@ -1666,12 +1673,11 @@ body.js .pub-figure.is-placeholder img {
 
 .pub-figure img {
     display: block;
+    /* natural sizing: figures come in every aspect ratio, so the
+       thumbnail tracks the image's own proportions — no fixed box,
+       no cropping, no letterbox bars */
     width: 100%;
-    aspect-ratio: 8 / 5;
-    /* contain + white matte: keep the full figure visible (framework
-       figures have mixed aspect ratios; cover would crop content and
-       expose the dark card background as black bars) */
-    object-fit: contain;
+    height: auto;
     background: #fff;
     transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
