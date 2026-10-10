@@ -157,7 +157,7 @@
     }
 
     /* --------------------------------------------------------
-       Member portraits and lab-life photos — enlarge on activation.
+       Member portraits, lab-life photos, and zoomable links — enlarge on activation.
     -------------------------------------------------------- */
     const photoDialog = document.querySelector('.members-photo-dialog');
     if (photoDialog) {
@@ -176,17 +176,18 @@
             activePhotoLink = null;
         }
 
-        document.querySelectorAll('[data-member-photo], [data-life-photo]').forEach(function (link) {
-            link.setAttribute('aria-label', '放大查看' + link.querySelector('img').alt);
+        document.querySelectorAll('[data-member-photo], [data-life-photo], [data-photo-zoom]').forEach(function (link) {
+            const thumb = link.querySelector('img');
+            const label = link.getAttribute('data-photo-caption') || (thumb ? thumb.alt : link.textContent.trim());
+            link.setAttribute('aria-label', '放大查看' + label);
             link.addEventListener('click', function (event) {
                 event.preventDefault();
-                const photo = link.querySelector('img');
                 const card = link.closest('.members-card, .members-advisor, .life-photo');
                 const name = card && card.querySelector('h3, h4, figcaption span');
                 activePhotoLink = link;
                 enlargedPhoto.src = link.href;
-                enlargedPhoto.alt = photo.alt;
-                caption.textContent = name ? name.textContent : photo.alt;
+                enlargedPhoto.alt = label;
+                caption.textContent = name ? name.textContent : label;
                 photoDialog.classList.add('open');
                 photoDialog.setAttribute('aria-hidden', 'false');
                 document.body.classList.add('modal-open');

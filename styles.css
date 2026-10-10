@@ -1241,24 +1241,22 @@ body.modal-open {
     line-height: 1.7;
 }
 
-.news-figure {
-    display: inline-block;
-    max-width: 420px;
-    margin: 0.95rem 0 0;
+.news-certificate-link {
+    color: var(--gold-deep);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200, 164, 93, 0.45);
+    padding-bottom: 1px;
+    cursor: zoom-in;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.news-figure img {
-    display: block;
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid rgba(20, 21, 27, 0.12);
-    box-shadow: 0 10px 26px rgba(20, 21, 27, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.news-figure:hover img {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 32px rgba(20, 21, 27, 0.16);
+.news-certificate-link:hover {
+    color: var(--text);
+    border-color: var(--gold-deep);
 }
 
 .news-pagination {
