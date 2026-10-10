@@ -1241,6 +1241,26 @@ body.modal-open {
     line-height: 1.7;
 }
 
+.news-figure {
+    display: inline-block;
+    max-width: 420px;
+    margin: 0.95rem 0 0;
+}
+
+.news-figure img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(20, 21, 27, 0.12);
+    box-shadow: 0 10px 26px rgba(20, 21, 27, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-figure:hover img {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(20, 21, 27, 0.16);
+}
+
 .news-pagination {
     max-width: 980px;
     margin: 2.25rem auto 0;
